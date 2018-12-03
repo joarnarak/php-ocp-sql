@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
               <tr>
 	      <th>Name</th>
 	      <th>Credit Limit</th>
-              </tr>"
+              </tr>";
     while($row = $result->fetch_assoc()) {
 	echo "<tr>";
 	echo "<td>" . $row["customerName"] . "</td>";
