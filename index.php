@@ -1,3 +1,4 @@
+<h1>Hola Mundo!</h1>
  <?php
 $servername = "mysql";
 $serverport = "3306";
