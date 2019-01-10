@@ -1,10 +1,10 @@
 <h1>Hello World!</h1>
  <?php
-$servername = "myslq";
-$serverport = "3306";
-$username = "test";
-$password = "test";
-$dbname = "sampledb";
+$servername = getenv('MYSQL_SERVICE_HOST');
+$serverport = getenv('MYSQL_SERVICE_PORT');
+$username = getenv('mysqluser');
+$password = getenv('mysqlpassword');
+$dbname = getenv('mysqldatabase');
 
 // Create connection
 $conn = new mysqli($servername.':'.$serverport, $username, $password, $dbname);
@@ -13,20 +13,20 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT customerName, creditLimit FROM customers WHERE country LIKE '%Spain%'";
+$sql = "SELECT id, nombre FROM asistentes";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 	// output data of each row
 	echo "<table border='1'>
               <tr>
-	      <th>Name</th>
-	      <th>Credit Limit</th>
+	      <th>Id</th>
+	      <th>Nombre</th>
               </tr>";
     while($row = $result->fetch_assoc()) {
 	echo "<tr>";
-	echo "<td>" . $row["customerName"] . "</td>";
-	echo "<td>" . $row["creditLimit"]. "</td>";
+	echo "<td>" . $row["id"] . "</td>";
+	echo "<td>" . $row["nombre"]. "</td>";
 	echo "</tr>";
     }
 	echo "</table>";
